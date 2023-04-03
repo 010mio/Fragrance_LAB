@@ -1,0 +1,11 @@
+<h1>article index</h1>
+
+<% @articles.each do |article| %>
+<div>
+  <%= image_tag article.get_image %>
+  <p>画像：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>タイトル：<%= article.title %></p>
+  <p>本文：<%= article.body %></p>
+  <p>ユーザーネーム：<%= article.customer.name %></p>
+</div>
+<% end %>
