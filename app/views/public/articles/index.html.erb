@@ -1,12 +1,23 @@
 <h1>article index</h1>
 
+<%= form_tag({controller:"articles",action:"index"}, method: :get) do %>
+    <% Tag.all.each do |t| %>
+        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+    <% end %>
+    <%= submit_tag '検索' %>
+<% end %>
+
 <% @articles.each do |article| %>
 <div>
   <p><%= image_tag article.image, size: "100x100" %></p>
   <p>タイトル：<%= link_to article.title, article_path(article.id) %></p>
   <p>本文：<%= article.body %></p>
   <p><%= article.customer.name %></p>
-</div>
 <% end %>
+
+<% @articles.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+<% end %>
+</div>
 
 <%= link_to "新規", new_article_path %>
