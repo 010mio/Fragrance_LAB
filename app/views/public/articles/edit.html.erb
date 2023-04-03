@@ -1,0 +1,14 @@
+<h1>article edit</h1>
+
+<%= image_tag @article.image, size: "100x100" %>
+
+<%= form_with model: @article do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  
+  <%= f.submit '保存' %>
+  
+<% end %>

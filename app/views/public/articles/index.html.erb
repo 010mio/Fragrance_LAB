@@ -2,10 +2,11 @@
 
 <% @articles.each do |article| %>
 <div>
-  <%= image_tag article.get_image %>
-  <p>画像：<%= image_tag 'sample-author1.jpg' %></p>
-  <p>タイトル：<%= article.title %></p>
+  <p><%= image_tag article.image, size: "100x100" %></p>
+  <p>タイトル：<%= link_to article.title, article_path(article.id) %></p>
   <p>本文：<%= article.body %></p>
-  <p>ユーザーネーム：<%= article.customer.name %></p>
+  <p><%= article.customer.name %></p>
 </div>
 <% end %>
+
+<%= link_to "新規", new_article_path %>
