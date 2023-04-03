@@ -1,0 +1,67 @@
+
+<!--ログイン中のヘッダー-->
+<% if customer_signed_in? %>
+  <ul class="nav col-6 col-sm-auto col-lg-auto my-2 justify-content-end my-md-0">
+    <li class="nav-item">
+      <%= link_to "TOP", root_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to "ABOUT", about_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to "ARTICLE", root_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to "MYPAGE", root_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to "LOG OUT", destroy_customer_session_path, method: :delete, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+    </li>
+  </ul>
+
+<!--管理者ログイン中のヘッダー-->
+<% elsif admin_signed_in? %>
+  <ul class="nav col-6 col-sm-3 col-lg-auto my-2 justify-content-center my-md-0">
+    <li class="nav-item">
+      <%= link_to "TOP", root_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to "ARTICLE", root_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to "LOG OUT",  destroy_admin_session_path, method: :delete, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+    </li>
+  </ul>
+
+<!--ログアウト中のヘッダー-->
+<% else %>
+<div class="row">
+    <div class="col-md">
+      <ul class="nav col-6 col-sm-3 col-lg-auto my-2 justify-content-end my-md-0">
+        <li class="nav-item">
+          <%= link_to "TOP", root_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "ABOUT", about_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "SIGN UP", new_customer_registration_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "LOG IN", new_customer_session_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <li class="nav-item">
+          <%= link_to "ADMIN LOG IN", new_admin_session_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
