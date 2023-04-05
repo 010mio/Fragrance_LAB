@@ -5,10 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Tag.create!([
-  { name: 'アロマオイル' },
-  { name: 'キャリアオイル' },
-  { name: 'フローラル' },
-  { name: 'ハーブ' },
-  { name: 'シトラス' }
-])
+Admin.create!(
+  email: "admin@email.com" ,
+  pasword: "adminadmin"
+  )

@@ -38,6 +38,6 @@ class Public::ArticlesController < ApplicationController
   private
   
   def article_params
-    params.require(:article).permit(:title, :image, :body, tag_ids:[])
+    params.require(:article).permit(:title, :image, :body)
   end
 end
