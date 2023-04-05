@@ -19,6 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   scope module: :public do
+    resources :customers, only: [:show, :edit, :update]
     resources :articles, only: [:new, :index, :show, :create, :edit, :update, :destroy]
   end
 end

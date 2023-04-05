@@ -1,0 +1,19 @@
+<!-- ユーザーの詳細 -->
+<div>
+  <h3><%= @customer.name %></h3>
+  <%#= image_tag @customer.get_profile_image(50,50) %>
+</div>
+<p><%= link_to "プロフィール編集", edit_customer_path %></p>
+
+
+<!-- ユーザーの投稿一覧 -->
+<h3>投稿記事一覧</h3>
+<% @articles.each do |article| %>
+<div>
+  <%= link_to article_path(article.id) do %>
+    <%= image_tag article.image, size: "50x50" %>
+  <% end %>
+  <p>タイトル：<%= article.title %></p>
+  <p>本文：<%= article.body %></p>
+</div>
+<% end %>
