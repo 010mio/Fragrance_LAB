@@ -53,18 +53,17 @@ ActiveRecord::Schema.define(version: 2023_04_05_060955) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "genre_id"
-    t.string "title"
-    t.text "body"
+    t.integer "customer_id", null: false
+    t.string "title", null: false
+    t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
-    t.integer "customer_id"
-    t.integer "article_id"
+    t.text "comment_body", null: false
+    t.integer "customer_id", null: false
+    t.integer "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,7 +76,7 @@ ActiveRecord::Schema.define(version: 2023_04_05_060955) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
+    t.string "name", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

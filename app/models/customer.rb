@@ -7,11 +7,9 @@ class Customer < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
-def get_profile_image(width, height)
-  unless profile_image.attached?
-    file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
-    profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  end
+
+def get_profile_image
+  (profile_image.attached?) ? profile_image : 'default-image.jpg'
 end
+
 end

@@ -3,4 +3,8 @@ class Article < ApplicationRecord
   belongs_to :customer
   has_many :comments, dependent: :destroy
 
+def get_image
+  (image.attached?) ? image : 'default-image.jpg'
+end
+
 end
