@@ -1,0 +1,9 @@
+<h1>admin customer show</h1>
+
+<h2>ユーザーネーム</h2>
+<p><%= @customer.name %></p>
+
+<h2>登録日</h2>
+<p><%= @customer.created_at %></p>
+
+<%= link_to "削除", admin_customer_path(@customer.id), method: :delete %>
