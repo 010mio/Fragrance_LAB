@@ -1,1 +1,17 @@
-<h1>ADMIN Customer index</h1>
+<h1>admin top</h1>
+<div class = "tabele">
+<table>
+<thead>
+  <th>ユーザーネーム</th>
+  <th>登録日</th>
+  <th>詳細ページ</th>
+</thead>
+<tbody>
+<% @customers.each do |customer| %>
+  <td><%= customer.name %></td>
+  <td><%= customer.created_at %></td>
+  <td><%= link_to "詳細", admin_customer_path(customer.id) %></td>
+</tbody>
+<% end %>
+</table>
+</div>
