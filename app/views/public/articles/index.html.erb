@@ -1,9 +1,22 @@
-<h1>article index</h1>
-<% @articles.each do |article| %>
-<div>
-  <p><%= image_tag article.image, size: "100x100" %></p>
-  <p>タイトル：<%= link_to article.title, article_path(article.id) %></p>
-  <p><%= article.customer.name %></p>
-<% end %>
+<div class ="container">
+  <h3><i class="fas fa-newspaper"></i>ARTICLE</h3>
+<!--新規記事投稿-->
+  <div class ="row justify-content-center py-1">
+  <%= link_to new_article_path, class: "btn btn-success", method: :get do %>
+  <i class="fas fa-edit"></i>NEW ARTICLE<% end %>
+  </div>
 
-<%= link_to "新規", new_article_path %>
+<!--記事一覧-->
+  <div class ="row justify-content-center py-5">
+  <% @articles.each do |article| %>
+    <div class="col-md-3 py-3">
+      <div class="card">
+        <%= image_tag article.image, size: "50x250", class: 'bd-placeholder-img card-img-top'%>
+        <%= link_to article.title, article_path(article.id), class: 'card-title' %>
+        <p class="text-muted"><%= article.customer.name %></p>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
+</div>

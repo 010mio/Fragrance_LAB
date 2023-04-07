@@ -1,21 +1,46 @@
-<h1>article show</h1>
+<div class ="container">
+  <h3>記事詳細</h3>
 
-<%= image_tag @article.image, size: "100x100" %>
+<!--記事詳細-->
+  <div class ="row justify-content-center">
+  <div class ="col-5 align-items-center offset-sm-1">
+    <%= image_tag @article.image, size: "500x500" %>
+  </div>
+  <div class ="col-5 align-items-center offset-sm-1">
+    <h3><%= @article.title %></h3>
+    <p><%= @article.body %></p>
+  </div>
+  </div>
+<!--記事削除-->
+  <div class ="row justify-content-center py-5">
+  <%= link_to "削除", article_path(@article.id), class: "btn btn-sm btn-danger", method: :delete %>
+  </div>
 
-<h2>タイトル</h2>
-<p><%= @article.title %></p>
-
-<h2>本文</h2>
-<p><%= @article.body %></p>
-
-  <%= link_to "削除", article_path(@article.id), method: :delete %>
-
-<div>
-  <p>コメント件数：<%= @article.comments.count %></p>
-  <% @article.comments.each do |comment| %>
-    <p><%= comment.customer.name %></p>
-    <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-    <p><%= comment.comment_body %></p>
-      <%= link_to "削除", admin_article_comment_path(comment.article, comment), method: :delete %>
+<!--コメント件数-->
+  <div class ="row py-5">
+  <small class="text-muted">コメント件数：<%= @article.comments.count %></small>
+  </div>
+<!--コメント一覧-->
+  <div class ="row justify-content-center">
+  <div class ="col-10 align-items-center">
+  <div class = "table table-bordered">
+    <table>
+      <thead>
+        <th>名前</th>
+        <th>投稿日</th>
+        <th>コメント</th>
+        <th>削除する</th>
+      </thead>
+    <% @article.comments.each do |comment| %>
+      <tbody>
+        <td><%= comment.customer.name %></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= comment.comment_body %></td>
+        <td><%= link_to "削除", admin_article_comment_path(comment.article, comment), class: "btn btn-sm btn-danger", method: :delete %></td>
+      </tbody>
   <% end %>
+    </table>
+  </div>
+  </div>
+  </div>
 </div>

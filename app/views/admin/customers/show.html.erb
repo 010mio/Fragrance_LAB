@@ -1,9 +1,17 @@
-<h1>admin customer show</h1>
+<div class ="container">
+  <h3>会員詳細</h3>
 
-<h2>ユーザーネーム</h2>
-<p><%= @customer.name %></p>
+  <div class ="row justify-content-center">
+  <div class ="col-5 align-items-center">
 
-<h2>登録日</h2>
-<p><%= @customer.created_at %></p>
+    <h5>ユーザーネーム</h5>
+    <p><%= @customer.name %></p>
 
-<%= link_to "削除", admin_customer_path(@customer.id), method: :delete %>
+    <h5>登録日</h5>
+    <p><%= @customer.created_at.strftime('%Y/%m/%d') %></p>
+  </div>
+  </div>
+
+  <div class ="row justify-content-center">
+    <%= link_to "退会させる", admin_customer_path(@customer.id), class: "btn btn-sm btn-danger", method: :delete %>
+  </div>

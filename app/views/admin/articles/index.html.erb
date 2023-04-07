@@ -1,8 +1,15 @@
-<h1>ADMIN Article index</h1>
-<% @articles.each do |article| %>
-<div>
-  <p><%= image_tag article.image, size: "100x100" %></p>
-  <p>タイトル：<%= link_to article.title, admin_article_path(article.id) %></p>
-  <p><%= article.customer.name %></p>
-  
-<% end %>
+<div class ="container">
+  <h3>投稿記事一覧</h3>
+
+  <div class ="row justify-content-center">
+  <% @articles.each do |article| %>
+    <div class="col-md-3">
+      <div class="card">
+        <%= image_tag article.image, class: 'card-img-top' %>
+        <%= link_to article.title, admin_article_path(article.id) %>
+        <p class="text-muted"><%= article.customer.name %></p>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

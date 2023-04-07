@@ -1,68 +1,70 @@
 <!--ログイン中のヘッダー-->
 <% if customer_signed_in? %>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Fragrance LAB.</a>
+  <nav class="navbar navbar-expand-lg navbar-light justify-content-end">
+    <a class="navbar-brand" href="/">Fragrance LAB.</a>
       <li class="nav-item">
-        <%= link_to "TOP", root_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to root_path,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-home"></i>TOP<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "ABOUT", about_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to about_path,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-info"></i>INFO<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "ARTICLE", articles_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to articles_path ,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-newspaper"></i>ARTICLE<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "MYPAGE", customer_path(current_customer.id), class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to customer_path(current_customer.id),class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-cog"></i>MY PAGE<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "LOG OUT", destroy_customer_session_path, method: :delete, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to destroy_customer_session_path ,class: "btn btn-light text-dark", method: :delete do %>
+        <i class="fas fa-sign-out-alt"></i>LOGOUT<% end %>
       </li>
   </nav>
 
 <!--管理者ログイン中のヘッダー-->
 <% elsif admin_signed_in? %>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Fragrance LAB.</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
+    <a class="navbar-brand" href="/">Fragrance LAB.</a>
       <li class="nav-item">
-        <%= link_to "TOP", admin_customers_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to admin_customers_path,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-users"></i>USERS<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "ARTICLE", admin_articles_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to admin_articles_path,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-newspaper"></i>ARTICLES<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "LOG OUT",  destroy_admin_session_path, method: :delete, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to destroy_admin_session_path,class: "btn btn-light text-dark", method: :delete do%>
+        <i class="fas fa-sign-out-alt"></i>LOGOUT<% end %>
       </li>
   </nav>
 
 <!--ログアウト中のヘッダー-->
 <% else %>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light justify-content-end">
     <a class="navbar-brand" href= "/" >Fragrance LAB.</a>
-
       <li class="nav-item">
-        <%= link_to "TOP", root_path, class: ' nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to root_path,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-home"></i>TOP<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "ABOUT", about_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to about_path,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-info"></i>INFO<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "SIGN UP", new_customer_registration_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to new_customer_session_path,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-sign-in-alt"></i>LOGIN<% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "LOG IN", new_customer_session_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        <%= link_to new_customer_registration_path,class: "btn btn-light text-dark", method: :get do %>
+        <i class="fas fa-user-plus"></i>SIGN UP<% end %>
       </li>
-
      <li class="nav-item">
-       <%= link_to "ADMIN LOG IN", new_admin_session_path, class: 'mx-1 nav-link btn btn-light btn-sm mr-2' %>
+       <%= link_to new_admin_session_path ,class: "btn btn-light text-dark", method: :get do %>
+       <i class="fas fa-user-cog"></i>ADMIN<% end %>
      </li>
   </nav>
 
