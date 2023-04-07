@@ -30,7 +30,6 @@
 <div>
   <p>コメント件数：<%= @article.comments.count %></p>
   <% @article.comments.each do |comment| %>
-    <p><%= image_tag comment.user.get_profile_image(50,50) %></p>
     <p><%= comment.customer.name %></p>
     <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
     <p><%= comment.comment_body %></p>

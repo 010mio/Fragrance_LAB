@@ -4,6 +4,11 @@ class Admin::ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def show
+    @article = Article.find(params[:id])
+    @comment = Comment.new
+  end
+
   def destroy
     article = Article.find(params[:id])
     article.destroy
