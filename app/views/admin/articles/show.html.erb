@@ -1,45 +1,47 @@
 <div class ="container">
+  <!--見出し-->
+  <div class ="row justify-content-center py-3">
   <h3>記事詳細</h3>
+  </div>
 
 <!--記事詳細-->
   <div class ="row justify-content-center">
-  <div class ="col-5 align-items-center offset-sm-1">
-    <%= image_tag @article.get_image, size: "500x500" %>
-  </div>
-  <div class ="col-5 align-items-center offset-sm-1">
-    <h3><%= @article.title %></h3>
-    <p><%= @article.body %></p>
-  </div>
+    <div class ="col-5 align-items-center ">
+      <%= image_tag @article.get_image %>
+    </div>
+    <div class ="col-4 align-items-center offset-sm-1">
+      <h3><%= @article.title %></h3>
+      <p><%= @article.body %></p>
+    </div>
   </div>
 <!--記事削除-->
-  <div class ="row justify-content-center py-5">
-  <%= link_to "削除", article_path(@article.id), class: "btn btn-sm btn-danger", method: :delete %>
+  <div class ="row justify-content-center py-3">
+    <%= link_to "削除", article_path(@article.id), class: "btn btn-sm btn-danger", method: :delete %>
   </div>
 
 <!--コメント件数-->
-  <div class ="row py-5">
-  <small class="text-muted">コメント件数：<%= @article.comments.count %></small>
+  <div class ="row">
+    <small class="text-muted">コメント件数：<%= @article.comments.count %></small>
   </div>
 <!--コメント一覧-->
   <div class ="row justify-content-center">
-  <div class ="col-10 align-items-center">
-    <table class = "table table-bordered">
-      <thead>
-        <th>名前</th>
-        <th>投稿日</th>
-        <th>コメント</th>
-        <th>削除する</th>
-      </thead>
-    <% @article.comments.each do |comment| %>
-      <tbody>
-        <td><%= comment.customer.name %></td>
-        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= comment.comment_body %></td>
-        <td><%= link_to "削除", admin_article_comment_path(comment.article, comment), class: "btn btn-sm btn-danger", method: :delete %></td>
-      </tbody>
-  <% end %>
-    </table>
-  </div>
-  </div>
+    <div class ="col-10 align-items-center">
+      <table class = "table table-bordered">
+        <thead>
+          <th>名前</th>
+          <th>投稿日</th>
+          <th>コメント</th>
+          <th>削除する</th>
+        </thead>
+      <% @article.comments.each do |comment| %>
+        <tbody>
+          <td><%= comment.customer.name %></td>
+          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= comment.comment_body %></td>
+          <td><%= link_to "削除", admin_article_comment_path(comment.article, comment), class: "btn btn-sm btn-danger", method: :delete %></td>
+        </tbody>
+    <% end %>
+      </table>
+    </div>
   </div>
 </div>

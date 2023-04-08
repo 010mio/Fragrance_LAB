@@ -1,18 +1,22 @@
 <div class ="container">
-  <div class ="row justify-content-center py-5">
-  <h3>投稿記事一覧</h3>
+
+<!--見出し-->
+  <div class ="row justify-content-center py-3">
+    <h3>投稿記事一覧</h3>
   </div>
 
+<!--記事一覧-->
   <div class ="row justify-content-center py-1">
-  <% @articles.each do |article| %>
+    <% @articles.each do |article| %>
     <div class="col-md-3 py-3">
       <div class="card">
-        <%= image_tag article.get_image, size: "50x250", class: 'card-img-top' %>
-        <%= link_to article.title, admin_article_path(article.id) %>
+        <h8 class="card-header"><%= article.title %></h8>
+        <p class="card-img-top py-2"><%= image_tag article.get_image, size: "50x250", class: 'card-img-top' %></p>
+        <p class="text-center py-1"><%= link_to "詳細へ", admin_article_path(article.id),class: "btn btn-dark" %></p>
         <p class="text-muted"><%= article.customer.name %></p>
       </div>
     </div>
-  <% end %>
-  <%= paginate @articles %>
+    <% end %>
+    <%= paginate @articles %>
   </div>
 </div>
