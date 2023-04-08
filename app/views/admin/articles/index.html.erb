@@ -1,15 +1,18 @@
 <div class ="container">
+  <div class ="row justify-content-center py-5">
   <h3>投稿記事一覧</h3>
+  </div>
 
-  <div class ="row justify-content-center">
+  <div class ="row justify-content-center py-1">
   <% @articles.each do |article| %>
-    <div class="col-md-3">
+    <div class="col-md-3 py-3">
       <div class="card">
-        <%= image_tag article.image, class: 'card-img-top' %>
+        <%= image_tag article.get_image, size: "50x250", class: 'card-img-top' %>
         <%= link_to article.title, admin_article_path(article.id) %>
         <p class="text-muted"><%= article.customer.name %></p>
       </div>
     </div>
   <% end %>
+  <%= paginate @articles %>
   </div>
 </div>

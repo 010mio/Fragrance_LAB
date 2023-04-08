@@ -1,22 +1,28 @@
 <div class ="container">
-  <h3><i class="fas fa-newspaper"></i>ARTICLE</h3>
-<!--新規記事投稿-->
+
+  <!--見出し-->
   <div class ="row justify-content-center py-1">
-  <%= link_to new_article_path, class: "btn btn-success", method: :get do %>
-  <i class="fas fa-edit"></i>NEW ARTICLE<% end %>
+    <h3><i class="fas fa-newspaper"></i>ARTICLE</h3>
   </div>
 
-<!--記事一覧-->
+  <!--新規記事投稿-->
+  <div class ="row justify-content-center py-1">
+    <%= link_to new_article_path, class: "btn btn-success", method: :get do %>
+    <i class="fas fa-edit"></i>NEW ARTICLE<% end %>
+  </div>
+
+  <!--記事一覧-->
   <div class ="row justify-content-center py-5">
   <% @articles.each do |article| %>
     <div class="col-md-3 py-3">
       <div class="card">
-        <%= image_tag article.image, size: "50x250", class: 'bd-placeholder-img card-img-top'%>
+        <%= image_tag article.get_image, size: "50x250", class: 'bd-placeholder-img card-img-top'%>
         <%= link_to article.title, article_path(article.id), class: 'card-title' %>
         <p class="text-muted"><%= article.customer.name %></p>
       </div>
     </div>
   <% end %>
+  <%= paginate @articles %>
   </div>
 
 </div>

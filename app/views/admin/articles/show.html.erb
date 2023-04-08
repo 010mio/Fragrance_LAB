@@ -4,7 +4,7 @@
 <!--記事詳細-->
   <div class ="row justify-content-center">
   <div class ="col-5 align-items-center offset-sm-1">
-    <%= image_tag @article.image, size: "500x500" %>
+    <%= image_tag @article.get_image, size: "500x500" %>
   </div>
   <div class ="col-5 align-items-center offset-sm-1">
     <h3><%= @article.title %></h3>
@@ -23,8 +23,7 @@
 <!--コメント一覧-->
   <div class ="row justify-content-center">
   <div class ="col-10 align-items-center">
-  <div class = "table table-bordered">
-    <table>
+    <table class = "table table-bordered">
       <thead>
         <th>名前</th>
         <th>投稿日</th>

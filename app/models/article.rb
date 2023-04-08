@@ -5,6 +5,7 @@ class Article < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   def get_image
+    pp "hoge",image.attached?
     (image.attached?) ? image : 'default-image2.jpg'
   end
   
