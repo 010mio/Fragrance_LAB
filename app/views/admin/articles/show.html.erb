@@ -1,4 +1,5 @@
 <div class ="container">
+
   <!--見出し-->
   <div class ="row justify-content-center py-3">
   <h3>記事詳細</h3>
@@ -14,6 +15,7 @@
       <p><%= @article.body %></p>
     </div>
   </div>
+
 <!--記事削除-->
   <div class ="row justify-content-center py-3">
     <%= link_to "削除", article_path(@article.id), class: "btn btn-sm btn-danger", method: :delete %>
@@ -27,7 +29,7 @@
   <div class ="row justify-content-center">
     <div class ="col-10 align-items-center">
       <table class = "table table-bordered">
-        <thead>
+        <thead class = "text-center">
           <th>名前</th>
           <th>投稿日</th>
           <th>コメント</th>
@@ -44,4 +46,5 @@
       </table>
     </div>
   </div>
+
 </div>

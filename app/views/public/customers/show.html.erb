@@ -1,19 +1,34 @@
-<!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @customer.name %></h3>
-  <%= image_tag @customer.get_profile_image, size: "50x50" %>
-</div>
-<p><%= link_to "プロフィール編集", edit_customer_path %></p>
+<div class ="container">
 
+  <!--見出し-->
+  <div class ="row justify-content-center py-1">
+    <h3><i class="fas fa-flask"></i>MY PAGE</h3>
+  </div>
 
-<!-- ユーザーの投稿一覧 -->
-<h3>投稿記事一覧</h3>
-<% @articles.each do |article| %>
-<div>
-  <%= link_to article_path(article.id) do %>
-    <%= image_tag article.image, size: "50x50" %>
-  <% end %>
-  <p>タイトル：<%= article.title %></p>
-  <p>本文：<%= article.body %></p>
+  <!-- ユーザーの詳細 -->
+  <div class ="row justify-content-center my-5">
+  <div class ="col-5 text-center">
+    <h3>ようこそ、<%= @customer.name %>さん</h3>
+    <p class ="my-5"><%= image_tag @customer.get_profile_image, size: "200x200" %></p>
+    <p><%= link_to "プロフィール編集", edit_customer_path,class: "btn btn-dark" %></p>
+  </div>
+  
+  <!-- ユーザーの投稿一覧 -->
+    <div class ="col-5 align-items-center">
+      <table class = "table table-bordered">
+        <thead class = "text-center">
+        <thead class = "text-center">
+          <th>タイトル</th>
+          <th>詳細へ</th>
+        </thead>
+        <% @articles.each do |article| %>
+        <tbody>
+          <td><%= article.title %></td>
+          <td class="text-center"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-dark" %></td>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
 </div>
-<% end %>

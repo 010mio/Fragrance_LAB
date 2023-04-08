@@ -13,7 +13,7 @@
         <h8 class="card-header"><%= article.title %></h8>
         <p class="card-img-top py-2"><%= image_tag article.get_image, size: "50x250", class: 'card-img-top' %></p>
         <p class="text-center py-1"><%= link_to "詳細へ", admin_article_path(article.id),class: "btn btn-dark" %></p>
-        <p class="text-muted"><%= article.customer.name %></p>
+        <p class="text-muted"><i class="fas fa-pen-nib"></i><%= article.customer.name %></p>
       </div>
     </div>
     <% end %>
