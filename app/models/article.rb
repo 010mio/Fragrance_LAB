@@ -13,4 +13,8 @@ class Article < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["title","body"]
+  end
+
 end

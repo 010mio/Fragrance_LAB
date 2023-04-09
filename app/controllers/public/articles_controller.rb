@@ -1,5 +1,6 @@
 class Public::ArticlesController < ApplicationController
   before_action :authenticate_customer!, only: %i(new create)
+  before_action :set_q, only: [:index, :search]
 
   def new
     @article = Article.new
@@ -13,6 +14,10 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.order(created_at: :desc).page(params[:page]).per(8)
+  end
+
+  def search
+    @results = @q.result
   end
 
   def show
@@ -37,8 +42,12 @@ class Public::ArticlesController < ApplicationController
   end
 
   private
-  
-  def article_params
-    params.require(:article).permit(:title, :image, :body)
+  def set_q
+    @q = Article.ransack(params[:q])
   end
+
+  def article_params
+    params.require(:article).permit(:title, :image, :body, :q)
+  end
+  
 end
