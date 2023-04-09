@@ -11,6 +11,7 @@
     <h3>ようこそ、<%= @customer.name %>さん</h3>
     <p class ="my-5"><%= image_tag @customer.get_profile_image, size: "200x200" %></p>
     <p><%= link_to "プロフィール編集", edit_customer_path,class: "btn btn-dark" %></p>
+    <p><%=link_to"お気に入り記事",favorites_customer_path(@customer) %></p>
   </div>
   
   <!-- ユーザーの投稿一覧 -->
