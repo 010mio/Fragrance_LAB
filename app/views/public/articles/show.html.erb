@@ -1,85 +1,85 @@
 <div class ="container">
-
+  <h3 class="text-center mt-3 mb-3"><i class="fas fa-newspaper"></i>ARTICLE</h3>
   <!--見出し-->
   <div class ="row justify-content-center py-2">
-    <h3><i class="fas fa-newspaper"></i>ARTICLE</h3>
-  </div>
+    <!--サイドバー-->
+    <%= render 'sidebar', sidebar: @sidebar %>
 
-  <!--記事詳細-->
-  <div class ="row justify-content-center py-2">
-    <!--タイトル-->
-      <h3><%= @article.title %></h3>
-    <!--ブックマーク-->
-      <% if @article.favorited_by?(current_customer) %>
-      <p>
-        <%= link_to article_favorites_path(@article),class: "btn btn-light mx-1", method: :delete do %>
-          <i class="fas fa-star"></i>
+    <!--記事詳細-->
+    <div id="contents" class="col-md-8">
+      <!--タイトル-->
+      <h3 class="text-center">
+        <%= @article.title %>
+        <!--ブックマーク-->
+        <% if @article.favorited_by?(current_customer) %>
+          <%= link_to article_favorites_path(@article),class: "btn btn-light mx-1", method: :delete do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        <% else %>
+          <%= link_to article_favorites_path(@article),class: "btn btn-light mx-1", method: :post do %>
+            <i class="far fa-star"></i>
+          <% end %>
         <% end %>
-      </p>
-      <% else %>
-      <p>
-        <%= link_to article_favorites_path(@article),class: "btn btn-light mx-1", method: :post do %>
-          <i class="far fa-star"></i>
-        <% end %>
-      </p>
+      </h3>
+  
+      <!--画像-->
+      <div class ="text-center my-5 mx-2">
+        <%= image_tag @article.image, size: "280x220" %>
+      </div>
+      <!--本文-->
+      <div class ="col-5 my-5 mx-auto">
+        <p><%= @article.body %></p>
+      </div>
+      <!--編集・削除ボタン-->
+      <div class ="row justify-content-center py-2">
+      <% if @article.customer == current_customer %>
+        <%= link_to "EDIT", edit_article_path(@article.id), class: "btn btn-sm btn-success my-2 mx-2" %>
+        <%= link_to "DELETE", article_path(@article.id), class: "btn btn-sm btn-danger my-2 mx-2", method: :delete %>
       <% end %>
-  </div>
-  <div class ="row">
-    <!--画像-->
-    <div class ="col-5 my-5 mx-2">
-      <%= image_tag @article.image, size: "280x220" %>
-    </div>
-    <!--本文-->
-    <div class ="col-5 my-5 mx-2">
-      <p><%= @article.body %></p>
-    </div>
-  </div>
-
-  <!--編集・削除ボタン-->
-  <div class ="row justify-content-center py-2">
-  <% if @article.customer == current_customer %>
-    <%= link_to "EDIT", edit_article_path(@article.id), class: "btn btn-sm btn-success my-2 mx-2" %>
-    <%= link_to "DELETE", article_path(@article.id), class: "btn btn-sm btn-danger my-2 mx-2", method: :delete %>
-  <% end %>
-  </div>
-
-  <!--コメント件数-->
-  <div class ="row">
-    <small class="text-muted">コメント件数：<%= @article.comments.count %></small>
-  </div>
-  <!--コメント一覧-->
-  <div class ="row justify-content-center">
-    <div class ="col-10 align-items-center">
-      <table class = "table table-bordered">
-        <thead class = "text-center">
-          <th>名前</th>
-          <th>投稿日</th>
-          <th>コメント</th>
-          <th>削除する</th>
-        </thead>
-        <% @article.comments.each do |comment| %>
-        <tbody>
-          <td><%= comment.customer.name %></td>
-          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-          <td><%= comment.comment_body %></td>
-          <% if comment.customer == current_customer %>
-          <td class ="text-center"><%= link_to "削除", article_comment_path(comment.article, comment), class: "btn btn-sm btn-danger", method: :delete %></td>
-          <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <!--コメントフォーム-->
-  <div class ="row justify-content-center">
-    <%= form_with model: [@article, @comment] do |f| %>
-    <div class ="col-5">
-      <%= f.text_area :comment_body, style: "width:100%", placeholder: "コメントをここに" %>
-    </div>
-    <div class ="col-2">
-      <%= f.submit "送信", class: "btn btn-sm btn-success mx-2" %>
-    </div>
-    <% end %>
-  </div>
+      </div>
+    
+      <!--コメント件数-->
+      <div class ="row">
+        <small class="text-muted">コメント件数：<%= @article.comments.count %></small>
+      </div>
+      <!--コメント一覧-->
+      <div class ="row justify-content-center">
+        <div class ="col-10 align-items-center">
+          <table class = "table table-bordered">
+            <thead class = "text-center">
+              <th>名前</th>
+              <th>投稿日</th>
+              <th>コメント</th>
+              <th>削除する</th>
+            </thead>
+            <% @article.comments.each do |comment| %>
+            <tbody>
+              <td><%= comment.customer.name %></td>
+              <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= comment.comment_body %></td>
+              <% if comment.customer == current_customer %>
+              <td class ="text-center"><%= link_to "削除", article_comment_path(comment.article, comment), class: "btn btn-sm btn-danger", method: :delete %></td>
+              <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--コメントフォーム-->
+      <div class ="justify-content-center">
+        <%= form_with model: [@article, @comment] do |f| %>
+        <div class="row">
+          <div class ="col-10">
+            <%= f.text_area :comment_body, placeholder: "コメントをここに", class: "w-100" %>
+          </div>
+          <div class ="col-2">
+            <%= f.submit "送信", class: "btn btn-sm btn-success mx-2" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  
+    </div><!-- contents end -->
 
 </div>
+</div><!-- container end -->

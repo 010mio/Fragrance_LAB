@@ -5,6 +5,9 @@
     <h3><i class="fas fa-newspaper"></i>ARTICLE</h3>
   </div>
 
+  <!--サイドバー-->
+  <%= render 'sidebar', sidebar: @sidebar %>
+
 <%= image_tag @article.image, size: "100x100" %>
 
 <%= form_with model: @article do |f| %>

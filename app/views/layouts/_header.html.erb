@@ -1,7 +1,7 @@
 <!--ログイン中のヘッダー-->
 <% if customer_signed_in? %>
-  <nav class="navbar navbar-expand-lg navbar-light justify-content-end">
-    <a class="navbar-brand" href="/">Fragrance LAB.</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-pink justify-content-end">
+    <a class="navbar-brand text-light" href="/">Fragrance LAB.</a>
       <li class="nav-item">
         <%= link_to root_path,class: "btn btn-light text-dark mx-1", method: :get do %>
         <i class="fas fa-home"></i>TOP<% end %>
@@ -22,7 +22,7 @@
 
 <!--管理者ログイン中のヘッダー-->
 <% elsif admin_signed_in? %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-pink justify-content-end">
     <a class="navbar-brand" href="/">Fragrance LAB.</a>
       <li class="nav-item">
         <%= link_to admin_customers_path,class: "btn btn-light text-dark mx-1", method: :get do %>

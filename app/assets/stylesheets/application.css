@@ -13,11 +13,6 @@
  *= require_tree .
  *= require_self
  */
- .image{
-    width: 50px;
-    height: 50px;
- }
-
 .pagination>li>a {          
   border: none;     
   color: #696969;   
@@ -30,4 +25,15 @@
 
 .pagination>li>a:hover {        
   border-radius: 15px;   
+}
+
+.profile_image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.bg-pink {
+  background-color: #9fbd8f;
 }
