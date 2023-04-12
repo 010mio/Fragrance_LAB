@@ -7,17 +7,16 @@
 
   <!-- ユーザーの詳細 -->
   <div class ="row justify-content-center my-5">
-  <div class ="col-5 text-center">
-    <h3>ようこそ、<%= @customer.name %>さん</h3>
-    <p class ="my-5"><%= image_tag @customer.get_profile_image, size: "200x200" %></p>
-    <p><%= link_to "プロフィール編集", edit_customer_path,class: "btn btn-dark" %></p>
-    <p><%=link_to"お気に入り記事",favorites_customer_path(@customer) %></p>
-  </div>
-  
-  <!-- ユーザーの投稿一覧 -->
+    <div class ="col-5 text-center">
+      <h3>ようこそ、<%= @customer.name %>さん</h3>
+      <p class ="my-5"><%= image_tag @customer.get_profile_image, size: "200x200" %></p>
+      <p><%= link_to "プロフィール編集", edit_customer_path,class: "btn btn-dark" %></p>
+      <p><%=link_to"お気に入り記事",favorites_customer_path(@customer),class: "btn btn-dark" %></p>
+    </div>
+
+    <!-- ユーザーの投稿一覧 -->
     <div class ="col-5 align-items-center">
       <table class = "table table-bordered">
-        <thead class = "text-center">
         <thead class = "text-center">
           <th>タイトル</th>
           <th>詳細へ</th>

@@ -1,15 +1,22 @@
 <div class ="container">
 
+  <!--サイドバー-->
+  <%= render 'sidebar', sidebar: @sidebar %>
+
   <!--見出し-->
   <div class ="row justify-content-center py-1">
     <h3><i class="fas fa-newspaper"></i>ARTICLE</h3>
   </div>
+
   <!--検索バー-->
+  <div>
   <%= search_form_for @q, url: search_articles_path do |f| %>
     <i class="fas fa-search"></i>
     <%= f.search_field :title_cont %>
     <%= f.submit '検索' %>
   <% end %>
+  </div>
+
   <!--新規記事投稿-->
   <div class ="row justify-content-center py-1">
     <%= link_to new_article_path, class: "btn btn-success", method: :get do %>
