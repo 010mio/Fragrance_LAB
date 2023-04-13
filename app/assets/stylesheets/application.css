@@ -13,27 +13,43 @@
  *= require_tree .
  *= require_self
  */
+ /*ページネーション*/
 .pagination>li>a {          
   border: none;     
   color: #696969;   
 }
-
 .pagination>.active>a {     
   background: #93c9ff;     
   border-radius: 15px;     
 }
-
 .pagination>li>a:hover {        
   border-radius: 15px;   
 }
 
-.profile_image {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+/*背景*/
+.bg-original {
+  background-color: #a7d0d1;
 }
-
-.bg-pink {
-  background-color: #9fbd8f;
+.bg-brown {
+  background-color: #d1bda7;
+}
+/*ボタン*/
+.btn-original {
+    background: white;
+    color: #9fbd8f;
+}
+.w-btn {
+  width: 140px !important;
+}
+/*プロフィール画像*/
+.profile_image{
+  border: 1px solid;
+  border-radius: 8px;
+  border-color: white;
+}
+/*サイドバー*/
+.sidebar{
+  height: 100%;
+  border-right: 1px solid;
+  border-color: gray;
 }

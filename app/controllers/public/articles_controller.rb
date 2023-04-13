@@ -3,35 +3,29 @@ class Public::ArticlesController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def new
-    @sidebar = current_customer
     @article = Article.new
   end
 
   def create
-    @sidebar = current_customer
     @article = current_customer.articles.new(article_params)
     @article.save
     redirect_to '/articles'
   end
 
   def index
-    @sidebar = current_customer
     @articles = Article.all.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def search
-    @sidebar = current_customer
     @results = @q.result
   end
 
   def show
-    @sidebar = current_customer
     @article = Article.find(params[:id])
     @comment = Comment.new
   end
 
   def edit
-    @sidebar = current_customer
     @article = Article.find(params[:id])
   end
 

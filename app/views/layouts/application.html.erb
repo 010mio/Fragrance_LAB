@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,13 +12,14 @@
 
   <body>
       <header>
-      <%= render 'layouts/header' %>
+        <nav class="navbar navbar-expand-lg bg-brown justify-content-end">
+          <a class="navbar-brand text-light" href="/">Fragrance LAB.</a>
+        </nav>
       </header>
+      <%= render 'layouts/sidebar'%>
     <%= yield %>
   </body>
-  <footer class="footerr mt-auto py-3 bg-body-tertiary">
-	<div class="container text-center fixed-bottom">
-	  <p class="text-muted">©Infratop.</p>
-	</div>
+  <footer class="footerr mt-auto bg-brown fixed-bottom">
+	  <p class="text-center text-light pt-2 ">©Infratop.</p>
 </footer>
 </html>
