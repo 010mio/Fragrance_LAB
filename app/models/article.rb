@@ -13,8 +13,14 @@ class Article < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["title","body"]
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @article = Article.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @article = Article.where("body LIKE?","#{word}%")
+    else
+      @article = Article.all
+    end
   end
 
 end

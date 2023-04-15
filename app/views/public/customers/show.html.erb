@@ -1,7 +1,7 @@
-<div class ="container">
+<div class ="col-md-10">
 
   <!--見出し-->
-  <div class ="row justify-content-center py-1">
+  <div class ="row justify-content-center py-3">
     <h3><i class="fas fa-flask"></i>MY PAGE</h3>
   </div>
 
@@ -10,12 +10,13 @@
     <div class ="col-5 text-center">
       <h3>ようこそ、<%= @customer.name %>さん</h3>
       <p class ="my-5"><%= image_tag @customer.get_profile_image, size: "200x200" %></p>
-      <p><%= link_to "プロフィール編集", edit_customer_path,class: "btn btn-dark" %></p>
-      <p><%=link_to"お気に入り記事",favorites_customer_path(@customer),class: "btn btn-dark" %></p>
+      <p><%= link_to "EDIT", edit_customer_path,class: "btn btn-original w-btn" %></p>
+      <p><%=link_to"BOOKMARK",favorites_customer_path(@customer),class: "btn btn-original w-btn" %></p>
     </div>
 
     <!-- ユーザーの投稿一覧 -->
-    <div class ="col-5 align-items-center">
+    <div class ="col-3 align-items-center">
+      <h5 class ="text-center">投稿記事一覧</h5>
       <table class = "table table-bordered">
         <thead class = "text-center">
           <th>タイトル</th>
@@ -24,7 +25,7 @@
         <% @articles.each do |article| %>
         <tbody>
           <td><%= article.title %></td>
-          <td class="text-center"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-dark" %></td>
+          <td class="text-center"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-original" %></td>
         </tbody>
         <% end %>
       </table>

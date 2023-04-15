@@ -4,3 +4,49 @@
 li {
     list-style: none;
 }
+
+ /*ページネーション*/
+.pagination>li>a {          
+  border: none;     
+  color: #696969;   
+}
+.pagination>.active>a {     
+  background: #93c9ff;     
+  border-radius: 15px;     
+}
+.pagination>li>a:hover {        
+  border-radius: 15px;   
+}
+
+/*背景*/
+.bg-original {
+  background-color: #9fbd8f;
+}
+.bg-brown {
+  background-color: #d1bda7;
+}
+/*ボタン*/
+.btn-original {
+    background: #9fbd8f;
+    color: white;
+}
+.btn-original-sub {
+    background: white;
+    color: #9fbd8f;
+}
+.w-btn {
+  width: 140px !important;
+}
+/*プロフィール画像*/
+.profile_image{
+  background-color: white;
+  border-radius: 8px;
+  border-color: white;
+}
+/*サイドバー*/
+.sidebar{
+  height: 100%;
+  border-right: 1px solid;
+  border-color: gray;
+  padding-bottom: 100%;
+}

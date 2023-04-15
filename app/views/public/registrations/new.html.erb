@@ -1,4 +1,5 @@
-<h2>Sign up</h2>
+<div class ="col-md-10 text-center pt-5">
+<h3>SIGN UP</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
@@ -27,8 +28,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "SIGN UP",class: "btn btn-original w-btn m-3" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+</div>

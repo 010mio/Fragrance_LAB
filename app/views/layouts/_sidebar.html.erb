@@ -1,55 +1,53 @@
-<div class ="col-md-3 sidebar text-center sidebar_fixed bg-original ">
+<div class ="col-md-2 sidebar text-center sidebar_fixed bg-original ">
 
   <!--ログイン中のサイドバーー-->
 <% if customer_signed_in? %>
-  <li class ="profile_image m-2 p-2">
-    <%= image_tag current_customer.profile_image, size: "120x120"%></li>
+  <li class ="col-md-6 profile_image text-center m-1 py-3">
+    <%= image_tag current_customer.profile_image, size: "100x100"%></li>
 
-  <li><%= current_customer.name%></li>
-
-  <li><%= link_to root_path,class: "btn btn-dark w-btn my-1", method: :get do %>
+  <li><%= link_to root_path,class: "btn btn-original-sub w-btn my-1", method: :get do %>
     <i class="fas fa-home mx-2"></i>TOP<% end %></li>
 
-  <li><%= link_to about_path,class: "btn btn-dark w-btn my-1", method: :get do %>
+  <li><%= link_to about_path,class: "btn btn-original-sub w-btn my-1", method: :get do %>
     <i class="fas fa-info mx-2"></i>INFO<% end %></li>
 
-  <li><%= link_to articles_path ,class: "btn btn-dark w-btn my-1", method: :get do %>
+  <li><%= link_to articles_path ,class: "btn btn-original-sub w-btn my-1", method: :get do %>
     <i class="fas fa-newspaper mx-2"></i>ARTICLE<% end %></li>
 
-  <li><%= link_to customer_path(current_customer.id),class: "btn w-btn btn-dark my-1", method: :get do %>
+  <li><%= link_to customer_path(current_customer.id),class: "btn w-btn btn-original-sub my-1", method: :get do %>
   <i class="fas fa-flask mx-2"></i>MY PAGE<%end%></li>
 
-  <li><%= link_to destroy_customer_session_path ,class: "btn w-btn btn-dark my-1", method: :delete do %>
+  <li><%= link_to destroy_customer_session_path ,class: "btn w-btn btn-original-sub my-1", method: :delete do %>
   <i class="fas fa-sign-out-alt mx-2"></i>LOGOUT<% end %></li>
 
 
   <!--管理者ログイン中のサイドバー-->
   <% elsif admin_signed_in? %>
-    <li><%= link_to admin_customers_path,class: "btn w-btn btn-dark my-1", method: :get do %>
+    <li><%= link_to admin_customers_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
       <i class="fas fa-users mx-2"></i>USERS<% end %></li>
 
-    <li><%= link_to admin_articles_path,class: "btn w-btn btn-dark my-1", method: :get do %>
+    <li><%= link_to admin_articles_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
       <i class="fas fa-newspaper mx-2"></i>ARTICLES<% end %></li>
 
-    <li><%= link_to destroy_admin_session_path,class: "btn w-btn btn-dark my-1", method: :delete do%>
+    <li><%= link_to destroy_admin_session_path,class: "btn w-btn btn-original-sub my-1", method: :delete do%>
       <i class="fas fa-sign-out-alt mx-2"></i>LOGOUT<% end %></li>
 
 
 <!--ログアウト中のサイドバー-->
     <% else %>
-      <li><%= link_to root_path,class: "btn w-btn btn-dark my-1", method: :get do %>
+      <li><%= link_to root_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-home mx-2"></i>TOP<% end %></li>
 
-      <li><%= link_to about_path,class: "btn w-btn btn-dark my-1", method: :get do %>
+      <li><%= link_to about_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-info mx-2"></i>INFO<% end %></li>
 
-      <li><%= link_to new_customer_session_path,class: "btn w-btn btn-dark my-1", method: :get do %>
+      <li><%= link_to new_customer_session_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-sign-in-alt mx-2"></i>LOGIN<% end %></li>
 
-      <li><%= link_to new_customer_registration_path,class: "btn w-btn btn-dark my-1", method: :get do %>
+      <li><%= link_to new_customer_registration_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-user-plus mx-2"></i>SIGN UP<% end %></li>
 
-      <li><%= link_to new_admin_session_path ,class: "btn w-btn btn-dark my-1", method: :get do %>
+      <li><%= link_to new_admin_session_path ,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-user-cog mx-2"></i>ADMIN<% end %></li>
 <% end %>
 </div>

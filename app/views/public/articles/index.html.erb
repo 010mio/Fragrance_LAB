@@ -1,33 +1,37 @@
-<div class ="container">
+<div class ="col-md-10 ">
 
   <!--見出し-->
-  <div class ="row justify-content-center py-1">
+  <div class ="row justify-content-center p-3">
     <h3><i class="fas fa-newspaper"></i>ARTICLE</h3>
   </div>
 
   <!--検索バー-->
-  <div>
-  <%= search_form_for @q, url: search_articles_path do |f| %>
-    <i class="fas fa-search"></i>
-    <%= f.search_field :title_cont %>
-    <%= f.submit '検索' %>
+  <div class ="text-right">
+  <% if customer_signed_in? %>
+    <div class="search_form">
+      <%= form_with url: search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word %>
+        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+        <%= f.submit "検索", class: "btn btn-original m-2" %>
+      <% end %>
+    </div>
   <% end %>
   </div>
 
   <!--新規記事投稿-->
   <div class ="row justify-content-center py-1">
-    <%= link_to new_article_path, class: "btn btn-success", method: :get do %>
+    <%= link_to new_article_path, class: "btn btn-original", method: :get do %>
     <i class="fas fa-edit"></i>NEW ARTICLE<% end %>
   </div>
 
   <!--記事一覧-->
-  <div class ="row justify-content-center py-5">
+  <div class ="row justify-content-center p-5">
   <% @articles.each do |article| %>
     <div class="col-md-3 py-3">
       <div class="card">
         <h8 class="card-header"><%= article.title %></h8>
-        <p class="card-img-top py-2"><%= image_tag article.get_image, size: "50x250", class: 'card-img-top'%></p>
-        <p class="text-center py-1"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-dark" %></p>
+        <p class="card-img-top py-2"><%= image_tag article.get_image,  size: "30x350", class: 'card-img-top'%></p>
+        <p class="text-center py-1"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-original" %></p>
         <p class="text-muted"><i class="fas fa-pen-nib"></i><%= article.customer.name %></p>
       </div>
     </div>

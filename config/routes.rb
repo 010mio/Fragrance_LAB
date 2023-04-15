@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   #アバウトパス
   get '/about' => 'public/homes#about', as: "about"
+  #検索パス
+  get "search" => "public/search#search"
 
 # 顧客用
 devise_for :customers,skip: [:passwords], controllers: {
@@ -31,9 +33,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :articles, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
-      collection do
-        get 'search'
-      end
     end
   end
 end

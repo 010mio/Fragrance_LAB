@@ -1,4 +1,5 @@
-<h2>Log in</h2>
+<div class ="col-md-10 text-center pt-5">
+<h3>LOG IN</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -20,8 +21,8 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in",class: "btn btn-original w-btn m-3" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+</div>

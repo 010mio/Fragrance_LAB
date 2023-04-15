@@ -18,7 +18,7 @@
         <tbody>
           <td><%= customer.name %></td>
           <td><%= customer.created_at.strftime('%Y/%m/%d')  %></td>
-          <td class= "text-center"><%= link_to "詳細へ", admin_customer_path(customer.id), class: "btn btn-sm btn-dark" %></td>
+          <td class= "text-center"><%= link_to "詳細へ", admin_customer_path(customer.id), class: "btn btn-sm btn-original" %></td>
         </tbody>
         <% end %>
       </table>

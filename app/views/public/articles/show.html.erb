@@ -1,38 +1,38 @@
-<div class ="container">
+<div class ="col-md-10">
     <!--見出し-->
-  <div class ="row">
+  <div class ="row  justify-content-center ">
   <h3 class="text-center mt-3 mb-3"><i class="fas fa-newspaper"></i>ARTICLE</h3>
   </div>
-    <div class ="row">
+    <div class ="row justify-content-center ">
     <!--記事詳細-->
     <div id="contents" class="col-md-8">
       <!--タイトル-->
       <h3 class="text-center">
-        <%= @article.title %>
+        <%= @article.title %></h3>
         <!--ブックマーク-->
+         <div class ="row justify-content-center py-2">
         <% if @article.favorited_by?(current_customer) %>
-          <%= link_to article_favorites_path(@article),class: "btn btn-light mx-1", method: :delete do %>
+          <%= link_to article_favorites_path(@article),class: "btn btn-original mx-1", method: :delete do %>
             <i class="fas fa-star"></i>
           <% end %>
         <% else %>
-          <%= link_to article_favorites_path(@article),class: "btn btn-light mx-1", method: :post do %>
+          <%= link_to article_favorites_path(@article),class: "btn btn-original mx-1", method: :post do %>
             <i class="far fa-star"></i>
           <% end %>
         <% end %>
-      </h3>
-  
+        </div>
       <!--画像-->
       <div class ="text-center my-5 mx-2">
-        <%= image_tag @article.image, size: "280x220" %>
+        <%= image_tag @article.get_image, size: "280xauto" %>
       </div>
       <!--本文-->
-      <div class ="col-5 my-5 mx-auto">
+      <div class ="col-12 text-center">
         <p><%= @article.body %></p>
       </div>
       <!--編集・削除ボタン-->
       <div class ="row justify-content-center py-2">
       <% if @article.customer == current_customer %>
-        <%= link_to "EDIT", edit_article_path(@article.id), class: "btn btn-sm btn-success my-2 mx-2" %>
+        <%= link_to "EDIT", edit_article_path(@article.id), class: "btn btn-sm btn-original my-2 mx-2" %>
         <%= link_to "DELETE", article_path(@article.id), class: "btn btn-sm btn-danger my-2 mx-2", method: :delete %>
       <% end %>
       </div>
@@ -67,18 +67,16 @@
       <!--コメントフォーム-->
       <div class ="justify-content-center">
         <%= form_with model: [@article, @comment] do |f| %>
-        <div class="row">
-          <div class ="col-10">
+        <div class="row justify-content-center">
+          <p class ="col-8">
             <%= f.text_area :comment_body, placeholder: "コメントをここに", class: "w-100" %>
-          </div>
-          <div class ="col-2">
-            <%= f.submit "送信", class: "btn btn-sm btn-success mx-2" %>
-          </div>
+          </p>
+          <p class ="col-12 text-center">
+            <%= f.submit "送信", class: "btn btn-sm btn-original mx-2" %>
+          </p>
         </div>
         <% end %>
       </div>
   
     </div><!-- contents end -->
-
 </div>
-</div><!-- container end -->

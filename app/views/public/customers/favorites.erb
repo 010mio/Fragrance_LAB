@@ -1,7 +1,7 @@
-<div class ="container">
+<div class ="col-md-10 text-center">
 
   <!--見出し-->
-  <div class ="row justify-content-center py-2">
+  <div class ="row justify-content-center pt-5">
     <h3><i class="fas fa-star"></i>BOOKMARK</h3>
   </div>
 
@@ -16,7 +16,7 @@
         <% @favorite_articles.each do |article|%>
         <tbody>
          <td><%=article.title %></td>
-         <td class = "text-center"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-dark" %></td>
+         <td class = "text-center"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-original" %></td>
         </tbody>
         <% end %>
       </table>

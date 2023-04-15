@@ -12,14 +12,18 @@
 
   <body>
       <header>
-        <nav class="navbar navbar-expand-lg bg-brown justify-content-end">
+        <nav class="navbar navbar-expand-lg bg-original justify-content-end">
           <a class="navbar-brand text-light" href="/">Fragrance LAB.</a>
         </nav>
       </header>
-      <%= render 'layouts/sidebar'%>
-    <%= yield %>
+      
+      <div class="row">
+        <%= render 'layouts/sidebar'%>
+        
+        <%= yield %>
+      </div>
   </body>
-  <footer class="footerr mt-auto bg-brown fixed-bottom">
+  <footer class="footerr mt-auto bg-original fixed-bottom">
 	  <p class="text-center text-light pt-2 ">©Infratop.</p>
 </footer>
 </html>
