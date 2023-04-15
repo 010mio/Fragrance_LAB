@@ -42,6 +42,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   private
+  
   def set_q
     @q = Article.ransack(params[:q])
   end
@@ -49,5 +50,4 @@ class Public::ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :image, :body, :q)
   end
-  
 end

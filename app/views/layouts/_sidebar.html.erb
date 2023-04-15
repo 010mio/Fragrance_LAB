@@ -3,7 +3,7 @@
   <!--ログイン中のサイドバーー-->
 <% if customer_signed_in? %>
   <li class ="col-md-6 profile_image text-center m-1 py-3">
-    <%= image_tag current_customer.profile_image, size: "100x100"%></li>
+    <%= image_tag current_customer.get_profile_image, size: "100x100"%></li>
 
   <li><%= link_to root_path,class: "btn btn-original-sub w-btn my-1", method: :get do %>
     <i class="fas fa-home mx-2"></i>TOP<% end %></li>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #アバウトパス
   get '/about' => 'public/homes#about', as: "about"
   #検索パス
-  get "search" => "public/search#search"
+  get "search" => "public/searches#search"
 
 # 顧客用
 devise_for :customers,skip: [:passwords], controllers: {
@@ -22,6 +22,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :articles, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
+
   end
 
   scope module: :public do

@@ -1,5 +1,4 @@
 class Public::SearchesController < ApplicationController
-  before_action :authenticate_custoemr!
 
   def search
     @range = params[:range]
