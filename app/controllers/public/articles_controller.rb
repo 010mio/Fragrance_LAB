@@ -11,6 +11,7 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = current_customer.articles.new(article_params)
     @article.save
+    ArticleTagRelation.create(article_id: @article.id, tag_id: params[:article][:tag_id].to_i)
     redirect_to '/articles'
   end
 
@@ -47,6 +48,6 @@ class Public::ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :image, :body, tag_ids: [])
+    params.require(:article).permit(:title, :image, :body)
   end
 end

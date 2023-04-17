@@ -10,9 +10,7 @@
     <p>本文</p>
     <p><%= f.text_area :body %></p>
     <p>タグ</p>
-    <%= form_with url: articles_path, local: true, method: :get do |f| %>
-      <%= f.select(:tag_name, Tag.pluck(:name)) %>
-    <%end%>
+    <%= f.collection_select :tag_id, Tag.all, :id, :name %>
     <p><%= f.submit '投稿',class: "btn btn-original m-3" %></p>
   <%end%>
 
