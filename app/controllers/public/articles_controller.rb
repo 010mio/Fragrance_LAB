@@ -1,9 +1,11 @@
 class Public::ArticlesController < ApplicationController
   before_action :authenticate_customer!, only: %i(new create)
-  before_action :set_q, only: [:index, :search]
 
   def new
     @article = Article.new
+    if params[:tag]
+      Tag.create(name: params[:tag])
+    end
   end
 
   def create
@@ -13,11 +15,13 @@ class Public::ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all.order(created_at: :desc).page(params[:page]).per(8)
-  end
-
-  def search
-    @results = @q.result
+  #タグ検索
+    @articles = 
+    if params[:tag_name]
+      Tag.find_by_name(params[:tag_name]).articles.order(created_at: :desc).page(params[:page]).per(8)
+    else
+      Article.all.order(created_at: :desc).page(params[:page]).per(8)
+    end
   end
 
   def show
@@ -42,12 +46,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   private
-  
-  def set_q
-    @q = Article.ransack(params[:q])
-  end
-
   def article_params
-    params.require(:article).permit(:title, :image, :body, :q)
+    params.require(:article).permit(:title, :image, :body, tag_ids: [])
   end
 end

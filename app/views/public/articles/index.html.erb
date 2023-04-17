@@ -2,18 +2,25 @@
 
   <!--見出し-->
   <div class ="row justify-content-center p-3">
-    <h3><i class="fas fa-newspaper"></i>ARTICLE</h3>
+    <h3><i class="fas fa-leaf"></i>ARTICLE</h3>
   </div>
 
   <!--検索バー-->
   <div class ="text-right">
     <div class="search_form">
       <%= form_with url: search_path, local: true, method: :get do |f| %>
-        <i class="fas fa-search mx-2"></i><%= f.text_field :word %>
+        <i class="fas fa-search mx-2"></i>
+        <%= f.text_field :word %>
         <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
         <%= f.submit "検索", class: "btn btn-original m-2" %>
       <% end %>
     </div>
+
+    <%= form_with url: articles_path, local: true, method: :get do |f| %>
+      <i class="fas fa-tags"></i>
+      <%= f.select(:tag_name, Tag.pluck(:name)) %>
+      <%= f.submit "検索", class: "btn btn-original m-2" %>
+    <% end %>
   </div>
 
   <!--新規記事投稿-->
@@ -25,12 +32,17 @@
   <!--記事一覧-->
   <div class ="row justify-content-center p-5">
   <% @articles.each do |article| %>
-    <div class="col-md-3 py-3">
+    <div class="col-md-2">
       <div class="card">
         <h8 class="card-header"><%= article.title %></h8>
-        <p class="card-img-top py-2"><%= image_tag article.get_image,  size: "30x250", class: 'card-img-top'%></p>
-        <p class="text-center py-1"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-original" %></p>
-        <p class="text-muted"><i class="fas fa-pen-nib"></i><%= article.customer.name %></p>
+        <p class="card-img-top p-2"><%= image_tag article.get_image,  size: "30x120", class: 'card-img-top'%></p>
+        <p class="text-center px-1"><%= link_to "show more", article_path(article.id),class: "btn btn-original" %></p>
+        <p class="text-muted px-1"><i class="fas fa-pen-nib"></i><%= article.customer.name %></p>
+        <p class="text-muted px-1"><i class="fas fa-clock"></i><%= article.created_at.strftime('%Y/%m/%d') %></p>
+        <p class="text-muted px-1"><i class="fas fa-tags"></i>
+        <% article.tags.first(1).each do |tag| %>
+        <%= tag.name %>...</p>
+        <% end %>
       </div>
     </div>
   <% end %>

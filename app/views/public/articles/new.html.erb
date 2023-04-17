@@ -1,6 +1,6 @@
 <div class ="col-md-10 text-center">
   <!--見出し-->
-    <h3 class ="text-center mt-3 mb-3"><i class="fas fa-newspaper"></i>ARTICLE</h3>
+    <h3 class ="text-center mt-3 mb-3"><i class="fas fa-leaf"></i>ARTICLE</h3>
 
   <%= form_with model: @article do |f| %>
     <p>画像</p>
@@ -9,7 +9,16 @@
     <p><%= f.text_field :title %></p>
     <p>本文</p>
     <p><%= f.text_area :body %></p>
-    <p><%= f.submit '投稿',class: "btn btn-original" %></p>
-  <% end %>
+    <p>タグ</p>
+    <%= form_with url: articles_path, local: true, method: :get do |f| %>
+      <%= f.select(:tag_name, Tag.pluck(:name)) %>
+    <%end%>
+    <p><%= f.submit '投稿',class: "btn btn-original m-3" %></p>
+  <%end%>
 
+  <!--タグを追加-->
+  <%= form_tag({controller:"articles",action:"new"}, method: :get) do %>
+    <%= text_field_tag :tag %>
+    <%= submit_tag 'タグを追加',class: "btn btn-original" %>
+  <% end %>
 </div>
