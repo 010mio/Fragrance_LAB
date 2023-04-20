@@ -1,9 +1,8 @@
-<div class ="col-md-2 sidebar text-center sidebar_fixed bg-original ">
-
+<div class ="bg-original text-center">
   <!--ログイン中のサイドバーー-->
 <% if customer_signed_in? %>
-  <li class ="col-md-6 profile_image m-1 py-3 text-center">
-    <%= image_tag current_customer.get_profile_image, size: "100x100"%></li>
+  <li class ="profile_image ml-3 m-3 py-3">
+    <%= image_tag current_customer.get_profile_image, size: "100x100" %></li>
 
   <li><%= link_to root_path,class: "btn btn-original-sub w-btn my-1", method: :get do %>
     <i class="fas fa-home mx-2"></i>TOP<% end %></li>
