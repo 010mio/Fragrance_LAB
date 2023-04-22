@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  validates :name, presence: true
 
 def get_profile_image
   (profile_image.attached?) ? profile_image : 'default-image.jpg'

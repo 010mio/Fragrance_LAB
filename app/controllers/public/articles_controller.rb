@@ -10,9 +10,12 @@ class Public::ArticlesController < ApplicationController
 
   def create
     @article = current_customer.articles.new(article_params)
-    @article.save
-    ArticleTagRelation.create(article_id: @article.id, tag_id: params[:article][:tag_id].to_i)
-    redirect_to '/articles'
+    if @article.save
+      ArticleTagRelation.create(article_id: @article.id, tag_id: params[:article][:tag_id].to_i)
+      redirect_to '/articles'
+    else
+      render :new
+    end
   end
 
   def index
@@ -35,9 +38,13 @@ class Public::ArticlesController < ApplicationController
   end
 
   def update
-    article = Article.find(params[:id])
-    article.update(article_params)
-    redirect_to article_path(article.id)  
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to article_path(@article.id)
+    else
+
+      render :edit
+    end
   end
 
   def destroy

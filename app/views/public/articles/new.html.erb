@@ -1,6 +1,16 @@
 <div class ="col-md-10 text-center">
-  <!--見出し-->
-    <h3 class ="text-center mt-3 mb-3"><i class="fas fa-leaf"></i>ARTICLE</h3>
+<!--見出し-->
+<h3 class ="text-center mt-3 mb-3"><i class="fas fa-leaf"></i>ARTICLE</h3>
+
+<!--エラーメッセージ-->
+<% if @article.errors.any? %>
+  <%= @article.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @article.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
   <%= form_with model: @article do |f| %>
     <p>画像</p>

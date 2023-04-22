@@ -1,13 +1,13 @@
 class Public::CommentsController < ApplicationController
 
   def create
-    article = Article.find(params[:article_id])
-    comment = current_customer.comments.new(comment_params)
-    comment.article_id = article.id
-    if comment.save
-      redirect_to article_path(article)
+    @article = Article.find(params[:article_id])
+    @comment = current_customer.comments.new(comment_params)
+    @comment.article_id = @article.id
+    if @comment.save
+      redirect_to article_path(@article)
     else
-      render article_path(article)
+      render template: "public/articles/show"
     end
   end
 

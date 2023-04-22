@@ -1,8 +1,18 @@
-<div class ="col-md-10 text-center">
+<div class ="text-center">
   <!--見出し-->
   <div class="row justify-content-center p-3">
     <h3><i class="fas fa-leaf"></i>ARTICLE</h3>
   </div>
+
+<!--エラーメッセージ-->
+<% if @article.errors.any? %>
+  <%= @article.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @article.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
   <div class="row justify-content-center p-3">
     <div class="col-md-12">
@@ -12,14 +22,14 @@
     <%= form_with model: @article do |f| %>
       <p>タイトル</p>
       <%= f.text_field :title %>
+      
       <p>本文</p>
-    <div class="col-md-12">
+      <div class="col-md-12">
       <%= f.text_area :body, class: "w-100" %>
-    </div>
-    <div class="col-md-12 p-3">
+      </div>
+      <div class="col-md-12 p-3">
       <%= f.submit '保存',class: "btn btn-original" %>
-    </div>
-
+      </div>
     <% end %>
   </div>
 

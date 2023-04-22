@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      customer:
+        name: 名前
+      article:
+        title: タイトル
+        body: 本文
+        image: 画像
+      comment:
+        comment_body: コメント
+  activemodel:   # Formオブジェクトを用いた場合
+     attributes:
+       order_object:

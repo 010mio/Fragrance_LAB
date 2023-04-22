@@ -12,7 +12,7 @@ class Admin::ArticlesController < ApplicationController
   def destroy
     article = Article.find(params[:id])
     article.destroy
-    redirect_to 'admin/articles'
+    redirect_to '/admin/articles'
   end
 
 end

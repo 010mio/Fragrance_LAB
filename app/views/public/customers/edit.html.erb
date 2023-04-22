@@ -1,9 +1,18 @@
-<div class ="col-md-10 text-center">
+<div class ="text-center">
   <!--見出し-->
   <div class ="row justify-content-center py-5">
     <h3><i class="fas fa-flask"></i>PLOFILE EDIT</h3>
   </div>
-  
+
+<!--エラーメッセージ-->
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
   <!--プロフィール情報-->
   <div class ="row justify-content-center py-3">
     <%= form_with model: @customer do |f| %>

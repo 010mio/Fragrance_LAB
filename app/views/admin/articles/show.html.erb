@@ -18,7 +18,7 @@
 
 <!--記事削除-->
   <div class ="row justify-content-center py-3">
-    <%= link_to "削除", article_path(@article.id), class: "btn btn-sm btn-danger", method: :delete %>
+    <%= link_to "削除", admin_article_path(@article.id), class: "btn btn-sm btn-danger", method: :delete %>
   </div>
 
 <!--コメント件数-->
