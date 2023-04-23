@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+  before_action :ensure_normal_customer, only: %i[destroy create]
 
   def create
     @article = Article.find(params[:article_id])

@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :ensure_normal_customer, only: %i[update edit]
 
   def show
   @customer = current_customer

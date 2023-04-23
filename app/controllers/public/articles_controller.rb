@@ -1,5 +1,5 @@
 class Public::ArticlesController < ApplicationController
-  before_action :authenticate_customer!, except: [:top, :index, :show]
+  before_action :ensure_normal_customer, only: %i[update destroy create new edit]
 
   def new
     @article = Article.new

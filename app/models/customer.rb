@@ -15,4 +15,11 @@ def get_profile_image
   (profile_image.attached?) ? profile_image : 'default-image.jpg'
 end
 
+def self.guest
+  find_or_create_by!(email: 'guest@email.com') do |customer|
+    customer.password = SecureRandom.urlsafe_base64
+    customer.name = "ゲスト"
+  end
+end
+
 end

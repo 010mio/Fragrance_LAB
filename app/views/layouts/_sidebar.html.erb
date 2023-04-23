@@ -45,6 +45,9 @@
 
       <li><%= link_to new_customer_registration_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-user-plus mx-2"></i>SIGN UP<% end %></li>
+        
+      <li><%= link_to public_guest_sign_in_path, class: "btn w-btn btn-original-sub my-1", method: :post do%>
+        <i class="fas fa-user-tie"></i>GUEST<% end %></li>
 
       <li><%= link_to new_admin_session_path ,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-user-cog mx-2"></i>ADMIN<% end %></li>

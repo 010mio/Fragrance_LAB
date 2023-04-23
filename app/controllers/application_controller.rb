@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  #before_action :authenticate_customer!, except: [:top, :index, :show]
+
 
   protected
   #ログイン後遷移先
@@ -20,5 +20,11 @@ class ApplicationController < ActionController::Base
     else
         root_path
     end
+    end
+    
+    def ensure_normal_customer
+      if current_customer.email == 'guest@email.com'
+        redirect_to root_path, alert: 'ゲストユーザーとしてログイン中のため実行できません。'
+      end
     end
 end
