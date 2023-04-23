@@ -1,5 +1,5 @@
 class Public::ArticlesController < ApplicationController
-  before_action :authenticate_customer!, only: %i(new create)
+  before_action :authenticate_customer!, except: [:top, :index, :show]
 
   def new
     @article = Article.new

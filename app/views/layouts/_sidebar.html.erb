@@ -8,10 +8,10 @@
     <i class="fas fa-home mx-2"></i>TOP<% end %></li>
 
   <li><%= link_to about_path,class: "btn btn-original-sub w-btn my-1", method: :get do %>
-    <i class="fas fa-info mx-2"></i>INFO<% end %></li>
+    <i class="fas fa-question mx-2"></i>ABOUT<% end %></li>
 
   <li><%= link_to articles_path ,class: "btn btn-original-sub w-btn my-1", method: :get do %>
-    <i class="fas fa-leaf"></i>ARTICLE<% end %></li>
+    <i class="fas fa-leaf mx-2"></i>ARTICLE<% end %></li>
 
   <li><%= link_to customer_path(current_customer.id),class: "btn w-btn btn-original-sub my-1", method: :get do %>
   <i class="fas fa-flask mx-2"></i>MY PAGE<%end%></li>
@@ -38,7 +38,7 @@
         <i class="fas fa-home mx-2"></i>TOP<% end %></li>
 
       <li><%= link_to about_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
-        <i class="fas fa-info mx-2"></i>INFO<% end %></li>
+        <i class="fas fa-question mx-2"></i>ABOUT<% end %></li>
 
       <li><%= link_to new_customer_session_path,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-sign-in-alt mx-2"></i>LOGIN<% end %></li>

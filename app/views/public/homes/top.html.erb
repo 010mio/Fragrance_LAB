@@ -1,11 +1,13 @@
 
   <% if customer_signed_in? %>
   <div class="justify-content-center p-2">
-    <%= image_tag "top.jpg", width: '100%' %>
+    <div class ="text-center p-3">
+      <%= image_tag "top.jpg", width: '100%' %>
+    </div>
   </div>
-  <h4 class ="text-left"><i class="fas fa-leaf"></i>New Posts</h4>
+    <h4 class ="text-left"><i class="fas fa-leaf"></i>New Posts</h4>
   
-  <div class ="row">
+    <div class ="row">
       <% @articles.first(3).each do |article| %>
        <div class="col-md-2">
           <div class="card">
@@ -19,7 +21,9 @@
       <% end %>
     <% else %>
       <div class="justify-content-center p-2">
-        <%= image_tag "top.jpg", width: '100%' %>
+        <div class ="text-center p-3">
+          <%= image_tag "top.jpg", width: '100%' %>
+        </div>
       </div>
     <% end %>
   </div>

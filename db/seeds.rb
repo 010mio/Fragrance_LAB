@@ -9,11 +9,7 @@ Admin.create!(
   email: "admin@email.com" ,
   password: "admin123"
   )
- Customer.create!(
-  name: "ゲスト",
-  email: "guest@email.com" ,
-  password: "guest123"
-  )
+
  Tag.create([
   { name: 'アロマ' },
   { name: 'シトラス' },

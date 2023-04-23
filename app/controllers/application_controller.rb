@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
- before_action :authenticate_customer!, except: [:top]
+  #before_action :authenticate_customer!, except: [:top, :index, :show]
+
   protected
   #ログイン後遷移先
   def after_sign_in_path_for(resource_or_scope)
