@@ -6,6 +6,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @articles = @customer.articles
   end
 
   def destroy

@@ -11,7 +11,6 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = current_customer.articles.new(article_params)
     if @article.save
-      ArticleTagRelation.create(article_id: @article.id, tag_id: params[:article][:tag_id].to_i)
       redirect_to '/articles'
     else
       render :new
@@ -22,9 +21,9 @@ class Public::ArticlesController < ApplicationController
   #タグ検索
     @articles = 
     if params[:tag_name]
-      Tag.find_by_name(params[:tag_name]).articles.order(created_at: :desc).page(params[:page]).per(8)
+      Tag.find_by_name(params[:tag_name]).articles.order(created_at: :desc).page(params[:page]).per(6)
     else
-      Article.all.order(created_at: :desc).page(params[:page]).per(8)
+      Article.all.order(created_at: :desc).page(params[:page]).per(6)
     end
   end
 
@@ -55,6 +54,6 @@ class Public::ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :image, :body)
+    params.require(:article).permit(:title, :image, :body, :tag_id)
   end
 end

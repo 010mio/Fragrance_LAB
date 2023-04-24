@@ -3,8 +3,7 @@ class Article < ApplicationRecord
   belongs_to :customer
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :article_tag_relations, dependent: :destroy
-  has_many :tags, through: :article_tag_relations,  dependent: :destroy
+  belongs_to :tag
 
   validates :title, presence: true
   validates :body, presence: true

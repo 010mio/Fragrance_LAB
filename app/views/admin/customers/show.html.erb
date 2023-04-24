@@ -1,21 +1,33 @@
-<div class ="container">
-
 <!--見出し-->
   <div class ="row justify-content-center py-3">
     <h3>会員詳細</h3>
   </div>
-
 <!--会員情報-->
   <div class ="row justify-content-center">
-    <div class ="col-5 align-items-center">
+    <div class ="col-md-3 align-items-center">
       <h5>ユーザーネーム</h5>
       <p><%= @customer.name %></p>
       <h5>登録日</h5>
       <p><%= @customer.created_at.strftime('%Y/%m/%d') %></p>
     </div>
-  </div>
 
+    <div class ="col-3 align-items-center">
+      <h5 class ="text-center">投稿記事一覧</h5>
+      <table class = "table table-bordered">
+        <thead class = "text-center">
+          <th>タイトル</th>
+          <th>詳細へ</th>
+        </thead>
+        <% @articles.each do |article| %>
+        <tbody>
+          <td><%= article.title %></td>
+          <td class="text-center"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-original" %></td>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
 <!--退会ボタン-->
-  <div class ="row justify-content-center">
+  <div class ="row justify-content-center mt-5">
     <%= link_to "退会させる", admin_customer_path(@customer.id), class: "btn btn-sm btn-danger", method: :delete %>
   </div>
