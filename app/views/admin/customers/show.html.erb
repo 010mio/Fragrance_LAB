@@ -21,7 +21,7 @@
         <% @articles.each do |article| %>
         <tbody>
           <td><%= article.title %></td>
-          <td class="text-center"><%= link_to "詳細へ", article_path(article.id),class: "btn btn-original" %></td>
+          <td class="text-center"><%= link_to "詳細へ", admin_article_path(article.id),class: "btn btn-original" %></td>
         </tbody>
         <% end %>
       </table>
