@@ -5,6 +5,7 @@ class Public::CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = current_customer.comments.new(comment_params)
     @comment.article_id = @article.id
+    @comment.score = Language.get_data(comment_params[:comment_body])
     if @comment.save
       redirect_to article_path(@article)
     else
