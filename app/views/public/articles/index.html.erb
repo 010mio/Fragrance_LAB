@@ -34,11 +34,9 @@
       <div class="card m-3">
         <h8 class="card-header"><%= article.title %>
         <% if article.comments.blank? %>
-        <!--any?-->
           <% elsif article.comments.average(:score) > 0 %>
             <i class="fas fa-smile mt-2 text-success"></i>
               <% else %>
-                <i class="fas fa-meh-blank mt-2 text-muted"></i>
         <%end%>
         </h8>
         <p class="card-img-top p-2 px-4"><%= image_tag article.get_image,  size: "70x120", class: 'card-img-top'%></p>
