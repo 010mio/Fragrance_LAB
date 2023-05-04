@@ -12,6 +12,7 @@
     </div>
     <div class ="col-4 align-items-center offset-sm-1">
       <h3><%= @article.title %></h3>
+      <h5>スコア<%= @article.comments.all.sum(:score) %></h5>
       <p><%= @article.body %></p>
     </div>
   </div>
@@ -33,6 +34,7 @@
           <th>名前</th>
           <th>投稿日</th>
           <th>コメント</th>
+          <th>スコア</th>
           <th>削除する</th>
         </thead>
       <% @article.comments.each do |comment| %>
@@ -40,6 +42,7 @@
           <td><%= comment.customer.name %></td>
           <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= comment.comment_body %></td>
+          <td><%= comment.score%></td>
           <td><%= link_to "削除", admin_article_comment_path(comment.article, comment), class: "btn btn-sm btn-danger", method: :delete %></td>
         </tbody>
     <% end %>

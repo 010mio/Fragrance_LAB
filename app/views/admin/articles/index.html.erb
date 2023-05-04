@@ -9,12 +9,23 @@
         <thead>
           <th>タイトル</th>
           <th>投稿者</th>
+          <th>スコア</th>
           <th>詳細</th>
         </thead>
         <% @articles.each do |article| %>
         <tbody>
           <td><%= article.title %></td>
           <td><%= article.customer.name %></td>
+              <!--感情スコア-->
+          <td><% if article.comments.any? %>
+              <%= article.comments.all.sum(:score) %><%end%>
+              <!--スコア評価-->
+              <% if article.comments.blank? %>
+              <% elsif article.comments.average(:score) > 0 %>
+              <i class="fas fa-smile mt-2 text-success"></i>
+              <% else %>
+              <i class="fas fa-meh-blank mt-2 text-danger"></i>
+              <%end%></td>
           <td><%= link_to "詳細へ", admin_article_path(article.id),class: "btn btn-original" %></td>
         </tbody>
         <% end %>

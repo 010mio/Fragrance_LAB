@@ -11,11 +11,11 @@ li {
   color: #696969;   
 }
 .pagination>.active>a {     
-  background: #93c9ff;     
+  background: #9fbd8f;     
   border-radius: 15px;     
 }
 .pagination>li>a:hover {        
-  border-radius: 15px;   
+  border-radius: 15px;
 }
 
 /*背景*/
@@ -46,4 +46,9 @@ border: solid white;
 /*サイドバー*/
 .sidebar{
   height: 90vh;
+}
+
+/*文字色*/
+.text-original { 
+  color:#9fbd8f;
 }
