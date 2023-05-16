@@ -9,15 +9,7 @@
 </div>
 <!--ブックマーク-->
 <div class ="row justify-content-center m-2">
-  <% if @article.favorited_by?(current_customer) %>
-    <%= link_to article_favorites_path(@article),class: "btn btn-original mx-1", method: :delete do %>
-      <i class="fas fa-star"></i>
-    <% end %>
-  <% else %>
-    <%= link_to article_favorites_path(@article),class: "btn btn-original mx-1", method: :post do %>
-      <i class="far fa-star"></i>
-    <% end %>
-  <% end %>
+  <div class="favorite-btn"><%= render "public/favorites/favorite-btn", article: @article %></div>
 </div>
 
 <!--エラーメッセージ-->
@@ -47,46 +39,9 @@
   <% end %>
   </div>
 
-  <!--コメント件数-->
-  <div class ="row">
-    <small class="text-muted">コメント件数：<%= @article.comments.count %></small>
-  </div>
   <!--コメント一覧-->
-  <div class ="row justify-content-center">
-        <div class ="col-10 align-items-center">
-          <table class = "table table-bordered">
-            <thead class = "text-center">
-              <th>名前</th>
-              <th>投稿日</th>
-              <th>コメント</th>
-              <th>削除する</th>
-            </thead>
-            <% @article.comments.each do |comment| %>
-            <tbody>
-              <td><%= comment.customer.name %></td>
-              <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-              <td><%= comment.comment_body %></td>
-              <% if comment.customer == current_customer %>
-              <td class ="text-center"><%= link_to "削除", article_comment_path(comment.article, comment), class: "btn btn-sm btn-danger", method: :delete %></td>
-              <% end %>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <div class = "comments"><%= render "public/comments/index", article: @article %></div>
   <!--コメントフォーム-->
-  <% if current_customer.email != 'guest@email.com' %>
-  <div class ="justify-content-center">
-    <%= form_with model: [@article, @comment] do |f| %>
-    <div class="row justify-content-center">
-      <p class ="col-8">
-        <%= f.text_area :comment_body, placeholder: "コメントをここに", class: "w-100" %>
-      </p>
-      <p class ="col-12 text-center">
-        <%= f.submit "送信", class: "btn btn-sm btn-original mx-2" %>
-      </p>
-    </div>
-    <% end %>
-  </div>
-  <% end %>
-</div><!-- contents end --
+  <%= render "public/comments/comment-form", article: @article, comment: @comment %>
+
+</div>

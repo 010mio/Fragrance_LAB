@@ -1,0 +1,10 @@
+<!--ブックマークボタンテンプレート-->
+<% if article.favorited_by?(current_customer) %>
+  <%= link_to article_favorites_path(article), method: :delete, remote: true, class: "btn btn-original mx-1" do %>
+    <i class="fas fa-star"></i>
+  <% end %>
+<% else %>
+  <%= link_to article_favorites_path(article), method: :post, remote: true, class: "btn btn-original mx-1" do %>
+    <i class="far fa-star"></i>
+  <% end %>
+<% end %>

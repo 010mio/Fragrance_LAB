@@ -6,16 +6,12 @@ class Public::CommentsController < ApplicationController
     @comment = current_customer.comments.new(comment_params)
     @comment.article_id = @article.id
     @comment.score = Language.get_data(comment_params[:comment_body])
-    if @comment.save
-      redirect_to article_path(@article)
-    else
-      render template: "public/articles/show"
-    end
+    @comment.save
   end
 
   def destroy
+    @article = Article.find(params[:article_id])
     Comment.find(params[:id]).destroy
-    redirect_to article_path(params[:article_id])
   end
 
   private
