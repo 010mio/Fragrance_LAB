@@ -16,7 +16,7 @@
 
     <%= form_with url: articles_path, local: true, method: :get do |f| %>
       <i class="fas fa-tags"></i>
-      <%= f.select(:tag_name, Tag.pluck(:name)) %>
+      <%= f.select(:tag_name, Tag.pluck(:name), value: params[:tag_name]) %>
       <%= f.submit "検索", class: "btn btn-original m-2" %>
     <% end %>
   </div>
@@ -39,7 +39,7 @@
               <% else %>
         <%end%>
         </h8>
-        <p class="card-img-top p-2 px-4"><%= image_tag article.get_image,  size: "70x120", class: 'card-img-top'%></p>
+        <p class="card-img-top p-2 px-4"><%= image_tag article.get_image,  width: '120px', class: 'card-img-top'%></p>
         <p class="text-center"><%= link_to "show more", article_path(article.id),class: "btn btn-original" %></p>
         <p class="text-muted px-1"><i class="fas fa-pen-nib"></i><%= article.customer.name %></p>
         <p class="text-muted px-1"><i class="fas fa-clock"></i><%= article.created_at.strftime('%Y/%m/%d') %></p>
@@ -47,5 +47,7 @@
       </div>
     </div>
   <% end %>
+  </div>
+  <div class ="row justify-content-center p-5">
   <%= paginate @articles %>
   </div>

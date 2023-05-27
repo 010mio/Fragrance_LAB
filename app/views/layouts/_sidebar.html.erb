@@ -1,4 +1,5 @@
 <div class ="bg-original text-center sidebar">
+<ul>
   <!--ログイン中のサイドバーー-->
 <% if customer_signed_in? %>
   <li>
@@ -52,4 +53,5 @@
       <li><%= link_to new_admin_session_path ,class: "btn w-btn btn-original-sub my-1", method: :get do %>
         <i class="fas fa-user-cog mx-2"></i>ADMIN<% end %></li>
 <% end %>
+</ul>
 </div>

@@ -7,8 +7,8 @@
 
 <!--記事詳細-->
   <div class ="row justify-content-center">
-    <div class ="col-5 align-items-center ">
-      <%= image_tag @article.get_image %>
+    <div class ="col-5 align-items-center">
+      <%= image_tag @article.get_image, class: "article-image" %>
     </div>
     <div class ="col-4 align-items-center offset-sm-1">
       <h3><%= @article.title %></h3>
