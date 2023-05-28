@@ -18,7 +18,6 @@ class Public::ArticlesController < ApplicationController
   end
 
   def index
-  #タグ検索
     @articles = 
     if params[:tag_name]
       Tag.find_by_name(params[:tag_name]).articles.order(created_at: :desc).page(params[:page]).per(6)
@@ -41,15 +40,18 @@ class Public::ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to article_path(@article.id)
     else
-
       render :edit
     end
   end
 
   def destroy
-    article = Article.find(params[:id])
-    article.destroy
-    redirect_to '/articles'
+      article = Article.find(params[:id])
+    if article.customer_id == current_customer.id
+      article.destroy
+      redirect_to '/articles'
+    else
+      redirect_to '/articles'
+    end
   end
 
   private

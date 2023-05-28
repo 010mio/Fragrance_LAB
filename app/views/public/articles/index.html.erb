@@ -14,7 +14,7 @@
       <% end %>
     </div>
 
-    <%= form_with url: articles_path, local: true, method: :get do |f| %>
+    <%= form_with url: articles_path, local: false, method: :get do |f| %>
       <i class="fas fa-tags"></i>
       <%= f.select(:tag_name, Tag.pluck(:name), selected: params[:tag_name]) %>
       <%= f.submit "検索", class: "btn btn-original m-2" %>
@@ -28,26 +28,4 @@
   </div>
 
   <!--記事一覧-->
-  <div class ="row justify-content-center p-5">
-  <% @articles.each do |article| %>
-    <div class="col-md-4">
-      <div class="card m-3">
-        <h8 class="card-header"><%= article.title %>
-        <% if article.comments.blank? %>
-          <% elsif article.comments.average(:score) > 0 %>
-            <i class="fas fa-smile mt-2 text-success"></i>
-              <% else %>
-        <%end%>
-        </h8>
-        <p class="card-img-top p-2 px-4"><%= image_tag article.get_image,  width: '120px', class: 'card-img-top'%></p>
-        <p class="text-center"><%= link_to "show more", article_path(article.id),class: "btn btn-original" %></p>
-        <p class="text-muted px-1"><i class="fas fa-pen-nib"></i><%= article.customer.name %></p>
-        <p class="text-muted px-1"><i class="fas fa-clock"></i><%= article.created_at.strftime('%Y/%m/%d') %></p>
-        <p class="text-muted px-1"><i class="fas fa-tags"></i><%= article.tag.name %></p>
-      </div>
-    </div>
-  <% end %>
-  </div>
-  <div class ="row justify-content-center p-5">
-  <%= paginate @articles %>
-  </div>
+  <%= render "public/articles/article-index", article: @article %>
