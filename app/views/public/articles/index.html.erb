@@ -14,10 +14,11 @@
       <% end %>
     </div>
 
-    <%= form_with url: articles_path, local: false, method: :get do |f| %>
+    <%#= form_with url: articles_path, local: false, method: :get do |f| %>
+    <%= form_tag(articles_path, method: :get, remote: true) do %>
       <i class="fas fa-tags"></i>
-      <%= f.select(:tag_name, Tag.pluck(:name), selected: params[:tag_name]) %>
-      <%= f.submit "検索", class: "btn btn-original m-2" %>
+      <%= select_tag(:tag_name, options_for_select(Tag.pluck(:name), params[:tag_name]), id: "tag_name") %>
+      <%#= f.submit "検索", class: "btn btn-original m-2" %>
     <% end %>
   </div>
 
@@ -28,4 +29,6 @@
   </div>
 
   <!--記事一覧-->
+  <div id="article-index">
   <%= render "public/articles/article-index", article: @article %>
+  </div>

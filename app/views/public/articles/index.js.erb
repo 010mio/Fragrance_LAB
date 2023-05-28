@@ -1,4 +1,1 @@
-jQuery(document).bind('ready ajaxComplete', function() {
-    $(".tag_name").html("<%= j(render 'public/articles/article-index', article: @article) %>");
-    $('.select-drop').change(function() {$(this).parent().submit();});
-});
+$("#article-index").html("<%= j(render 'public/articles/article-index', article: @article) %>");
