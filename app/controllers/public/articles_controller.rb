@@ -24,10 +24,6 @@ class Public::ArticlesController < ApplicationController
     else
       Article.all.order(created_at: :desc).page(params[:page]).per(6)
     end
-    respond_to do |format|
-      format.html { @articles }
-      format.json { render json: @articles }
-    end
   end
 
   def show
