@@ -3,6 +3,5 @@ document.addEventListener('DOMContentLoaded', function() {
     tag_name.addEventListener('change', function() {
         console.log(tag_name.value)
         tag_name.parentNode.submit();
-        
     })
 })
