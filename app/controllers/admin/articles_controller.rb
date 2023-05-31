@@ -13,3 +13,5 @@ class Admin::ArticlesController < ApplicationController
     article = Article.find(params[:id])
     article.destroy
   end
+  
+end
