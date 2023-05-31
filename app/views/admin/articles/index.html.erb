@@ -19,7 +19,6 @@
               <!--感情スコア-->
           <td>
             <% if article.comments.where.not(score: nil).any? %>
-                <%# byebug %>
                 <%= article.comments.all.sum(:score) %>
             
               <!--スコア評価-->
