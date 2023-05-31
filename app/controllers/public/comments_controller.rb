@@ -5,8 +5,12 @@ class Public::CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = current_customer.comments.new(comment_params)
     @comment.article_id = @article.id
-    @comment.score = Language.get_data(comment_params[:comment_body])
-    @comment.save
+    if @comment.customer_id == @article.customer_id
+      @comment.save
+    else
+      @comment.score = Language.get_data(comment_params[:comment_body])
+      @comment.save
+    end
   end
 
   def destroy
@@ -14,6 +18,9 @@ class Public::CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     if comment.customer_id == current_customer.id
       comment.destroy
+    else
+      redirect_to root_path
+      flash[:alert] = "不正な操作です"
     end
   end
 

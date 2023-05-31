@@ -33,10 +33,10 @@
 
   <!--編集・削除ボタン-->
   <div class ="row justify-content-center py-2">
-  <% if @article.customer == current_customer %>
+  <%# if @article.customer == current_customer %>
     <%= link_to "EDIT", edit_article_path(@article.id), class: "btn btn-sm btn-original my-2 mx-2" %>
     <%= link_to "DELETE", article_path(@article.id), class: "btn btn-sm btn-danger my-2 mx-2", method: :delete %>
-  <% end %>
+  <%# end %>
   </div>
 
   <!--コメント一覧-->

@@ -1,32 +1,30 @@
-  <!--見出し-->
-  <div class ="text-center p-3">
+<%= flash[:alert] %>
+
+<!--見出し-->
+<div class ="text-center p-3">
     <h3><i class="fas fa-leaf"></i>ARTICLE</h3>
   </div>
-
-  <!--検索バー-->
-  <div class ="text-right">
-    <div class="search_form">
-      <%= form_with url: search_path, local: true, method: :get do |f| %>
-        <i class="fas fa-search mx-2"></i>
-        <%= f.text_field :word, value: params[:word] %>
-        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-        <%= f.submit "検索", class: "btn btn-original m-2" %>
-      <% end %>
-    </div>
-
-    <%= form_tag(articles_path, method: :get, remote: true) do %>
-      <i class="fas fa-tags"></i>
-      <%= select_tag(:tag_name, options_for_select(Tag.pluck(:name), params[:tag_name]), id: "tag_name") %>
+<!--検索バー-->
+<div class ="text-right">
+  <div class="search_form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <i class="fas fa-search mx-2"></i>
+      <%= f.text_field :word, value: params[:word] %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn btn-original m-2" %>
     <% end %>
   </div>
-
-  <!--新規記事投稿-->
-  <div class ="row justify-content-center py-1">
+  <%= form_tag(articles_path, method: :get, remote: true) do %>
+    <i class="fas fa-tags"></i>
+    <%= select_tag(:tag_name, options_for_select(Tag.pluck(:name), params[:tag_name]), id: "tag_name") %>
+  <% end %>
+</div>
+<!--新規記事投稿-->
+<div class ="row justify-content-center py-1">
     <%= link_to new_article_path, class: "btn btn-original", method: :get do %>
     <i class="fas fa-edit"></i>NEW ARTICLE<% end %>
   </div>
-
-  <!--記事一覧-->
-  <div id="article-index">
-  <%= render "public/articles/article-index", article: @article %>
-  </div>
+<!--記事一覧-->
+<div id="article-index">
+<%= render "public/articles/article-index", article: @article %>
+</div>

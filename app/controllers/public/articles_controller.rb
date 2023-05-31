@@ -50,7 +50,8 @@ class Public::ArticlesController < ApplicationController
       article.destroy
       redirect_to '/articles'
     else
-      redirect_to '/articles'
+      redirect_to root_path
+      flash[:alert] = "不正な操作です"
     end
   end
 

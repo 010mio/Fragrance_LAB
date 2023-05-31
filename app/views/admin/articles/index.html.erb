@@ -17,15 +17,19 @@
           <td><%= article.title %></td>
           <td><%= article.customer.name %></td>
               <!--感情スコア-->
-          <td><% if article.comments.any? %>
-              <%= article.comments.all.sum(:score) %><%end%>
+          <td>
+            <% if article.comments.where.not(score: nil).any? %>
+                <%# byebug %>
+                <%= article.comments.all.sum(:score) %>
+            
               <!--スコア評価-->
               <% if article.comments.blank? %>
-              <% elsif article.comments.average(:score) > 0 %>
+              <% elsif article.comments.where.not(score: nil).average(:score) > 0 %>
               <i class="fas fa-smile mt-2 text-success"></i>
               <% else %>
               <i class="fas fa-meh-blank mt-2 text-danger"></i>
               <%end%></td>
+            <%end%>
           <td><%= link_to "詳細へ", admin_article_path(article.id),class: "btn btn-original" %></td>
         </tbody>
         <% end %>
